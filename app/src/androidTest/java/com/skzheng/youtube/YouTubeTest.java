@@ -20,7 +20,6 @@ import static org.junit.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
 public class YouTubeTest {
-    //声明
     Instrumentation instrumentation;
     public UiDevice MyDevice;
     String StartApp = "am start -W com.google.android.youtube.tv";
@@ -108,7 +107,6 @@ public class YouTubeTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //UiObject2 uiObject2 = MyDevice.findObject(By.text("247 video/webm; codecs=\"vp9\" 1280x720"));
         if (!MyDevice.hasObject(By.textContains("codece=\"vp9\""))) {
             fail();
         }

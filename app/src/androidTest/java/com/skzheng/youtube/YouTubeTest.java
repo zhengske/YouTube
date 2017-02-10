@@ -10,6 +10,7 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -121,10 +122,10 @@ public class YouTubeTest {
         }
     }
 
-    //    @After
-    //    public void tearDown() throws IOException {
-    //        MyDevice.executeShellCommand("am force-stop com.google.android.youtube.tv");
-    //    }
+    @After
+    public void tearDown() throws IOException {
+        MyDevice.executeShellCommand("am force-stop com.google.android.youtube.tv");
+    }
 
 
 }

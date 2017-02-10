@@ -10,7 +10,6 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,27 +35,79 @@ public class YouTubeTest {
     }
 
     @Test
-    public void YouTube() throws IOException, UiObjectNotFoundException, InterruptedException {
-        MyDevice.executeShellCommand(StartApp);
+    public void YouTube() {
+        try {
+            MyDevice.executeShellCommand(StartApp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         MyDevice.wait(Until.hasObject(By.text("home")), 5000);
         UiObject appSettings = new UiObject(new UiSelector().text("Settings"));
-        appSettings.click();
-        MyDevice.wait(1000);
+        try {
+            appSettings.click();
+        } catch (UiObjectNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         UiObject SFN = new UiObject(new UiSelector().text("Stats for nerds"));
-        SFN.click();
-        MyDevice.wait(1000);
-        SFN.click();
-        MyDevice.wait(1000);
+        try {
+            SFN.click();
+        } catch (UiObjectNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            SFN.click();
+        } catch (UiObjectNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         MyDevice.pressDPadDown();
-        MyDevice.wait(1000);
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         MyDevice.pressDPadDown();
-        MyDevice.wait(1000);
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         MyDevice.pressEnter();
-        MyDevice.wait(1000);
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         MyDevice.pressHome();
-        MyDevice.wait(1000);
-        MyDevice.executeShellCommand("am start -W https://www.youtube.com/watch?v=ioO7rUVqw9w\n");
-        MyDevice.wait(1000);
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            MyDevice.executeShellCommand("am start -W https://www.youtube.com/watch?v=ioO7rUVqw9w\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            MyDevice.wait(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         //UiObject2 uiObject2 = MyDevice.findObject(By.text("247 video/webm; codecs=\"vp9\" 1280x720"));
         if (!MyDevice.hasObject(By.textContains("codece=\"vp9\""))) {
             fail();
@@ -64,14 +115,18 @@ public class YouTubeTest {
     }
 
     @Test
-    public void Purchased() throws IOException {
-        MyDevice.executeShellCommand("am start -W https://www.youtube.com/watch?v=LFL4UnYvaGE");
+    public void Purchased() {
+        try {
+            MyDevice.executeShellCommand("am start -W https://www.youtube.com/watch?v=LFL4UnYvaGE");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    @After
-    public void tearDown() throws IOException {
-        MyDevice.executeShellCommand("am force-stop com.google.android.youtube.tv");
-    }
+    //    @After
+    //    public void tearDown() throws IOException {
+    //        MyDevice.executeShellCommand("am force-stop com.google.android.youtube.tv");
+    //    }
 
 
 }
